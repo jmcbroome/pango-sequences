@@ -1,4 +1,5 @@
 import argparse
+import sys
 import bte
 
 def argparser():
@@ -33,15 +34,18 @@ def main():
     args = argparser()
     t = bte.MATree(args.tree)
     available_annotes = t.dump_annotations()
+    if args.verbose:
+        print(f"{len(available_annotes)} annotations to be included.",file=sys.stderr)
     refgenome = parse_reference(args.reference)
+    of = open(args.outreference,"w+")
     for ann, base_node in available_annotes.items():
         if args.verbose:
-            print("Imputing haplotype for {}.")
+            print(f"Imputing haplotype for {ann}.",file=sys.stderr)
         mutd = t.get_haplotype(base_node)
         newref = impute_haplotype(refgenome, mutd)
-        with open(args.outreference,"w+") as of:
-            print(">"+ann,file=of)
-            print(newref,file=of)
+        print(">"+ann,file=of)
+        print(newref,file=of)
+    of.close()
 
 if __name__ == '__main__':
     main()
