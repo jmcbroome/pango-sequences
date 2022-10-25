@@ -1,14 +1,8 @@
 # Consensus sequences for each Pango lineage
 
-This repository contains semi-automatically generated prototype sequences for each Pango lineage. These sequences are not real sequences in databases but are algorithmically constructed consensus sequences that try to represent the common ancestor sequence of that lineage. They are based on the sequences designated in the cov-lineages/pango-designation repository. There is some manual curation involved to overwrite erroneous sites - errors happen when a lineage's designated sequences have dropout or reversions. The algorithm used to create these sequences has a high threshold to allow reversions, almost all sequences need to be reverted, otherwise it's assumed the reversions are an artefact.
+This fork contains automatically generated root sequences for each annotated lineage on the global phylogeny. As with the main repository, these sequences are not real sequences in databases but are algorithmically constructed consensus sequences that try to represent the common ancestor sequence of that lineage. They are based on the global phylogeny produced and maintained by UCSC. 
 
-Please be aware that due to the semi-automatic generation of these synthetic sequences, they can contain errors.
-
-For lineages that are part of BA.2*, BA.4* and BA.5* there has been significant curation/overwriting, but for previous lineages the amount of curation is very limited. So do expect errors.
-
-If you find errors, please open an issue here and I will fix it for everyone.
-
-The sequences contained here are the ones used in Nextclade reference trees and produced by code contained in the nextclade_data_workflows repository.
+Please be aware that due to the automatic generation of these synthetic sequences, they can contain errors.
 
 The repository contains:
 
